@@ -8,6 +8,17 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.9.2"
 activityCompose = "1.10.1"
 composeBom = "2024.09.00"
+hiltAndroid = "2.56.2"
+retrofit = "2.9.0"
+kspVersion = "2.1.21-2.0.1"
+composeNavigation = "2.8.0-alpha08"
+serialization = "1.6.3"
+turbine = "1.0.0"
+mockk = "1.13.10"
+coilCompose = "2.6.0"
+kotlinxConerter = "1.0.0"
+kotlinxCoroutinesTest = "1.8.1"
+roomVersion = "2.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,8 +36,32 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+#image loading
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+
+#networking
+retrofit-android = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
+kotlinx-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxConerter" }
+
+
+#dependency injection
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+hilt-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+
+#navigation
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+
+#testing
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion"}
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

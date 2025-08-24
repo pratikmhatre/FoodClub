@@ -1,4 +1,4 @@
-package cypher.foodclub.ui.theme
+package cypher.foodclub.core.theme
 
 import androidx.compose.ui.graphics.Color
 
