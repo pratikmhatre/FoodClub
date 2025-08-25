@@ -38,8 +38,8 @@ data class RestaurantsListResponse(
 
             val qtyLeft: String,
 
-            val end: String,
-            val start: String
+            val end: String?,
+            val start: String?
         )
     }
 }

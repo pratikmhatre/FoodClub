@@ -1,8 +1,10 @@
 package cypher.foodclub.core.domain
 
-import cypher.foodclub.core.data.network.models.RestaurantsListResponse
-import retrofit2.Response
+import cypher.foodclub.core.data.network.models.RestaurantsListResponse.Restaurant
+
 
 interface RestaurantsRepository {
-    suspend fun getAllRestaurants(): Response<RestaurantsListResponse>
+    suspend fun fetchAllRestaurantsFromServer() : Result<Unit>
+    fun getStoredRestaurantList(): List<Restaurant>
+    fun getRestaurantDetailsById(id: String): Restaurant?
 }
