@@ -5,11 +5,10 @@ and find attractive deals.
 
 ## Screenshots
 <div style="display: flex; flex-direction: row;">  
-<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Light_1.png" alt="Dashboard Light" width="200"/>
-<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Light_2.png" alt="Details Light" width="200"/>
-
-<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Dark_1.png" alt="Dashboard Dark" width="200"/>
-<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Dark_2.png" alt="Details Dark" width="200"/>
+<img src="https://github.com/pratikmhatre/FoodClub/blob/main/screenshots/list.png" alt="List Page" width="200"/>
+<img src="https://github.com/pratikmhatre/FoodClub/blob/main/screenshots/details_1.png" alt="Details Page" width="200"/>
+<img src="https://github.com/pratikmhatre/FoodClub/blob/main/screenshots/search.png" alt="Search Page" width="200"/>
+<img src="https://github.com/pratikmhatre/FoodClub/blob/main/screenshots/details_2.png" alt="Details Page" width="200"/>
 
 
 
