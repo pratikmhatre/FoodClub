@@ -3,6 +3,16 @@
 FoodClub is an Android application designed to help users discover restaurants, view their details,
 and find attractive deals.
 
+## Screenshots
+<div style="display: flex; flex-direction: row;">  
+<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Light_1.png" alt="Dashboard Light" width="200"/>
+<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Light_2.png" alt="Details Light" width="200"/>
+
+<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Dark_1.png" alt="Dashboard Dark" width="200"/>
+<img src="https://github.com/pratikmhatre/LocalBites/blob/master/images/Dark_2.png" alt="Details Dark" width="200"/>
+
+
+
 ## Features
 
 * **Restaurant Discovery:** Browse a list of available restaurants.
