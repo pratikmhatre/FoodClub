@@ -6,13 +6,13 @@ import cypher.foodclub.restaurantlist.domain.models.RestaurantListDisplayModel
 import javax.inject.Inject
 
 class GetRestaurantsListData @Inject constructor(private val repository: RestaurantsRepository) {
-    operator suspend fun invoke(): Result<List<RestaurantListDisplayModel>> {
+    suspend operator fun invoke(): Result<List<RestaurantListDisplayModel>> {
         val apiResult = repository.fetchAllRestaurantsFromServer()
         if (apiResult.isFailure) {
             return Result.failure(apiResult.exceptionOrNull()!!)
         } else {
             val cachedRestaurants = repository.getStoredRestaurantList()
-            val displayList = cachedRestaurants.toRestaurantListDisplayModel().sortedBy {
+            val displayList = cachedRestaurants.toRestaurantListDisplayModel().sortedByDescending {
                 it.bestDeal.bestDiscount.toDouble()
             }
             return Result.success(displayList)

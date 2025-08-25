@@ -5,6 +5,8 @@ import cypher.foodclub.core.data.network.ApiList
 import cypher.foodclub.core.domain.RestaurantsRepository
 import cypher.foodclub.core.utils.AppConstants
 import cypher.foodclub.core.utils.RetrofitInstance
+import cypher.foodclub.core.utils.customdispatcher.DefaultDispatcherProvider
+import cypher.foodclub.core.utils.customdispatcher.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,4 +28,7 @@ object AppModule {
     fun provideRestaurantsRepository(apiList: ApiList): RestaurantsRepository {
         return RestaurantsRepositoryImpl(apiList)
     }
+
+    @Provides
+    fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider
 }

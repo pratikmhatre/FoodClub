@@ -4,5 +4,5 @@ data class BestDeal(
     val bestDiscount: String,
     val isDealDineInOnly: Boolean,
     val isLimitedTimeDeal: Boolean,
-    val dealText: String = "Anytime today"
+    val validTill: String
 )

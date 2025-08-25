@@ -33,6 +33,6 @@ class RestaurantsRepositoryImpl @Inject constructor(private val apiList: ApiList
     }
 
     override fun getRestaurantDetailsById(id: String): Restaurant? {
-        return getStoredRestaurantList().firstOrNull { it.id == id }
+        return getStoredRestaurantList().firstOrNull { it.id == id.trim() }
     }
 }

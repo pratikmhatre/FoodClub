@@ -1,6 +1,5 @@
 package cypher.foodclub.core.utils
 
-import cypher.foodclub.core.data.network.models.RestaurantsListResponse
 import cypher.foodclub.core.data.network.models.RestaurantsListResponse.Restaurant
 import cypher.foodclub.restaurantdetails.domain.models.Deal
 import cypher.foodclub.restaurantdetails.domain.models.RestaurantDetailsModel
@@ -20,7 +19,7 @@ fun Restaurant.toRestaurantDetailsModel(): RestaurantDetailsModel {
 }
 
 private fun List<Restaurant.Deal>.getSortedDeals(): List<Deal> {
-    return this.sortedBy {
+    return this.sortedByDescending {
         it.discount.toDouble()
     }.map {
         Deal(
@@ -50,6 +49,6 @@ private fun getBestDealData(dealsList: List<Restaurant.Deal>): BestDeal {
         bestDiscount = bestDeal.discount,
         isDealDineInOnly = bestDeal.dineIn == "true",
         isLimitedTimeDeal = (bestDeal.opensAt ?: bestDeal.start).isNullOrBlank().not(),
-        dealText = "" //TODO: Add deal text
+        validTill = bestDeal.closesAt ?: ""
     )
 }
