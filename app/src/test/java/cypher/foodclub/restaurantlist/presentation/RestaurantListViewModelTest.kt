@@ -61,7 +61,7 @@ class RestaurantListViewModelTest {
         simulateSearchRestaurantsWithResults()
         simulateGetRestaurantsListFailure()
         assert(!viewModel.uiState.value.isLoading)
-        assert(viewModel.uiState.value.error != null)
+        assert(viewModel.uiState.value.isNetworkError)
     }
 
     @Test
@@ -69,7 +69,7 @@ class RestaurantListViewModelTest {
         simulateSearchRestaurantsWithResults()
         simulateGetRestaurantsListSuccess(emptyList = true)
         assert(viewModel.uiState.value.displayedRestaurants.isEmpty())
-        assert(viewModel.uiState.value.error != null)
+        assert(viewModel.uiState.value.isNetworkError)
     }
 
     @Test

@@ -11,9 +11,9 @@ fun Restaurant.toRestaurantDetailsModel(): RestaurantDetailsModel {
     return RestaurantDetailsModel(
         name = this.name,
         imageUrl = this.imageLink,
-        cuisines = cuisines,
+        cuisines = getCuisinesText(cuisines),
         address = "$address, $suburb",
-        workHours = "",
+        workHours = "$opensAt - $closesAt",
         deals = deals.getSortedDeals()
     )
 }
@@ -26,6 +26,7 @@ private fun List<Restaurant.Deal>.getSortedDeals(): List<Deal> {
             discount = it.discount,
             effectiveBetween = "${it.start ?: it.opensAt} - ${it.end ?: it.closesAt}",
             quantityLeft = it.qtyLeft,
+            isMultipleQuantityLeft = it.qtyLeft.toInt() > 1,
             isLimitedTime = (it.start ?: it.opensAt).isNullOrBlank().not()
         )
     }
@@ -34,21 +35,32 @@ private fun List<Restaurant.Deal>.getSortedDeals(): List<Deal> {
 fun List<Restaurant>.toRestaurantListDisplayModel(): List<RestaurantListDisplayModel> {
     return this.map {
         RestaurantListDisplayModel(
+            id = it.id,
             name = it.name,
             imageUrl = it.imageLink,
-            cuisines = it.cuisines,
+            cuisines = getCuisinesText(it.cuisines),
             address = "${it.address}, ${it.suburb}",
+            availableOptions = "Dine-In | Takeaway | Order Online",
             bestDeal = getBestDealData(it.deals),
         )
     }
 }
 
+private fun getCuisinesText(cuisines: List<String>): String {
+    val builder = StringBuilder()
+    cuisines.forEachIndexed { index, cuisine ->
+        builder.append(cuisine)
+        if (index != cuisines.lastIndex) builder.append(", ")
+    }
+    return builder.toString()
+}
+
 private fun getBestDealData(dealsList: List<Restaurant.Deal>): BestDeal {
-    val bestDeal = dealsList.minByOrNull { it.discount.toDouble() }!!
+    val bestDeal = dealsList.maxBy { it.discount.toDouble() }
     return BestDeal(
         bestDiscount = bestDeal.discount,
         isDealDineInOnly = bestDeal.dineIn == "true",
         isLimitedTimeDeal = (bestDeal.opensAt ?: bestDeal.start).isNullOrBlank().not(),
-        validTill = bestDeal.closesAt ?: ""
+        validTill = bestDeal.closesAt ?: bestDeal.end ?: ""
     )
 }

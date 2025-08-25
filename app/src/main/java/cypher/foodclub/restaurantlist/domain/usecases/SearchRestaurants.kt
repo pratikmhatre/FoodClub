@@ -9,9 +9,7 @@ class SearchRestaurants @Inject constructor(private val repository: RestaurantsR
     operator fun invoke(query: String): List<RestaurantListDisplayModel> {
         val restaurantsList = repository.getStoredRestaurantList().toRestaurantListDisplayModel()
         val searchResults = restaurantsList.filter {
-            it.name.lowercase().contains(query.lowercase()) || it.cuisines.any {
-                it.lowercase().contains(query.lowercase())
-            }
+            it.name.lowercase().contains(query.lowercase()) || it.cuisines.lowercase().contains(query.lowercase())
         }
         return searchResults
     }

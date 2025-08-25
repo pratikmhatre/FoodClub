@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">FoodClub</string>
+    <string name="search_restaurants">e.g. chinese, pizza</string>
+    <string name="network_error">Unable to reach servers</string>
+    <string name="search_error">No results found for %s</string>
+    <string name="menu">Menu</string>
+    <string name="call_us">Call us</string>
+    <string name="location">Location</string>
+    <string name="favourite">Favourite</string>
+    <string name="redeem">Redeem</string>
+    <string name="discount_text">%s%% Off</string>
+    <string name="deal_left">%s Deal Left</string>
+    <string name="deals_left">%s Deals Left</string>
+    <string name="effective_between">Between %s</string>
+    <string name="work_hours">Hours: %s</string>
+    <string name="anytime">Anytime</string>
+    <string name="dine_in_only">Dine In</string>
+    <string name="anytime_today">Anytime today</string>
+    <string name="arrive_before">Arrive before %s</string>
 </resources>

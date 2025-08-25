@@ -1,5 +1,6 @@
 [versions]
 agp = "8.10.0"
+converterGson = "2.9.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -18,10 +19,10 @@ mockk = "1.13.10"
 coilCompose = "2.6.0"
 kotlinxConerter = "1.0.0"
 kotlinxCoroutinesTest = "1.8.1"
-roomVersion = "2.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

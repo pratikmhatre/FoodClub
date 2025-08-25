@@ -37,14 +37,18 @@ class RestaurantListViewModel @Inject constructor(
             val result = getRestaurantsList.invoke()
             if (result.isSuccess) {
                 if (result.getOrNull()!!.isNotEmpty()) {
-                    _uiState.value = _uiState.value.copy(isLoading = false, displayedRestaurants = result.getOrNull()!!)
+                    _uiState.value = _uiState.value.copy(
+                        isLoading = false,
+                        displayedRestaurants = result.getOrNull()!!,
+                        isNetworkError = false,
+                        isSearchError = false
+                    )
                 } else {
-                    _uiState.value = _uiState.value.copy(isLoading = false, error = "No restaurants found!")
+                    _uiState.value = _uiState.value.copy(isLoading = false, isNetworkError = true)
                 }
             } else {
                 _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    error = result.exceptionOrNull()?.message ?: "Something went wrong!"
+                    isLoading = false, isNetworkError = true
                 )
             }
         }
@@ -56,11 +60,15 @@ class RestaurantListViewModel @Inject constructor(
 
     fun searchStoredRestaurants(query: String) {
         _uiState.value = _uiState.value.copy(currentSearchQuery = query)
-        if (query.isEmpty()) {
+        if (query.trim().isEmpty()) {
             fetchRestaurantsList()
             return
         }
-        val searchResults = searchRestaurants(query)
-        _uiState.value = _uiState.value.copy(displayedRestaurants = searchResults)
+        val searchResults = searchRestaurants.invoke(query.trim())
+        if (searchResults.isNotEmpty()) {
+            _uiState.value = _uiState.value.copy(displayedRestaurants = searchResults, isSearchError = false)
+        } else {
+            _uiState.value = _uiState.value.copy(displayedRestaurants = searchResults, isSearchError = true)
+        }
     }
 }
